@@ -1,0 +1,24 @@
+  - name: Simulate Build Process
+    run: |
+      echo "Compiling assets..."
+      echo "Minifying JavaScript..."
+      echo "Build Complete!"
+        - name: Quality Assurance Check
+    run: |
+      # This script checks if your HTML file contains the word "Startup"
+      if grep -q "Startup" index.html; then
+        echo "Test Passed: Branding found!"
+      else
+        echo "Test Failed: Branding missing!"
+        exit 1 
+      fi
+      # STEP 3: DEPLOY (Runs only if the Test succeeds)
+      deploy:
+        needs: test
+        runs-on: ubuntu latest
+        steps:
+          -name: Simulate Deployment
+          run: |
+            echo "Connecting to server..."
+            echo "Uploading files..."
+            echo " 🚀 DEPLOYMENT SUCCESSFUL! Your app is live."
